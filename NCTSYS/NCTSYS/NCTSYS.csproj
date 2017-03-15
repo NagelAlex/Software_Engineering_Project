@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Car.cs" />
+    <Compile Include="Centre.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="frmCancelApp.cs">
       <SubType>Form</SubType>

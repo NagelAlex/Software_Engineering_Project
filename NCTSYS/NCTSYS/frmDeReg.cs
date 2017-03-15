@@ -77,7 +77,7 @@ namespace NCTSYS
             }
             if (aCar.getCarStatus().ToString().Equals("I"))
             {
-                MessageBox.Show("Registration Number you entered not allready De-Registered  !", "Confirmation",
+                MessageBox.Show("Registration Number you entered allready De-Registered  !", "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtRegNo.Focus();
                 return;

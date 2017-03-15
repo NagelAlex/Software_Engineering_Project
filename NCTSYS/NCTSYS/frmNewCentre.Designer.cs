@@ -32,26 +32,26 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.backToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.grbOdetails = new System.Windows.Forms.GroupBox();
+            this.lblCID = new System.Windows.Forms.Label();
+            this.txtCentreId = new System.Windows.Forms.TextBox();
+            this.lblCname = new System.Windows.Forms.Label();
+            this.cboCounty = new System.Windows.Forms.ComboBox();
+            this.txtAdd2 = new System.Windows.Forms.TextBox();
+            this.txtAdd1 = new System.Windows.Forms.TextBox();
+            this.lblCounty = new System.Windows.Forms.Label();
+            this.lblTelNo = new System.Windows.Forms.Label();
+            this.lblAdd2 = new System.Windows.Forms.Label();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.lblAdd1 = new System.Windows.Forms.Label();
+            this.lblEcode = new System.Windows.Forms.Label();
+            this.txtTelNo = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
+            this.btnRegCentre = new System.Windows.Forms.Button();
+            this.btnClear = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtpNewCentDate = new System.Windows.Forms.DateTimePicker();
-            this.cmbCounty = new System.Windows.Forms.ComboBox();
-            this.tbNewCentAdd2 = new System.Windows.Forms.TextBox();
-            this.tbNewCentAdd1 = new System.Windows.Forms.TextBox();
-            this.tbNewCentEmail = new System.Windows.Forms.TextBox();
-            this.tbNewCentTelNo = new System.Windows.Forms.TextBox();
-            this.tbFname = new System.Windows.Forms.TextBox();
-            this.tbNewCentName = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.tbNewCentStaff = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.btnRegTest = new System.Windows.Forms.Button();
-            this.btnClearNewTest = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            this.grbOdetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -63,7 +63,7 @@
             this.exitToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(621, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(675, 24);
             this.menuStrip1.TabIndex = 3;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -82,203 +82,215 @@
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // grbOdetails
+            // 
+            this.grbOdetails.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("grbOdetails.BackgroundImage")));
+            this.grbOdetails.Controls.Add(this.lblCID);
+            this.grbOdetails.Controls.Add(this.txtCentreId);
+            this.grbOdetails.Controls.Add(this.lblCname);
+            this.grbOdetails.Controls.Add(this.cboCounty);
+            this.grbOdetails.Controls.Add(this.txtAdd2);
+            this.grbOdetails.Controls.Add(this.txtAdd1);
+            this.grbOdetails.Controls.Add(this.lblCounty);
+            this.grbOdetails.Controls.Add(this.lblTelNo);
+            this.grbOdetails.Controls.Add(this.lblAdd2);
+            this.grbOdetails.Controls.Add(this.txtEmail);
+            this.grbOdetails.Controls.Add(this.lblAdd1);
+            this.grbOdetails.Controls.Add(this.lblEcode);
+            this.grbOdetails.Controls.Add(this.txtTelNo);
+            this.grbOdetails.Controls.Add(this.txtName);
+            this.grbOdetails.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.grbOdetails.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbOdetails.Location = new System.Drawing.Point(29, 42);
+            this.grbOdetails.Name = "grbOdetails";
+            this.grbOdetails.Size = new System.Drawing.Size(615, 168);
+            this.grbOdetails.TabIndex = 57;
+            this.grbOdetails.TabStop = false;
+            this.grbOdetails.Text = "new Test Centre Details";
+            // 
+            // lblCID
+            // 
+            this.lblCID.AutoSize = true;
+            this.lblCID.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCID.Location = new System.Drawing.Point(49, 25);
+            this.lblCID.Name = "lblCID";
+            this.lblCID.Size = new System.Drawing.Size(68, 13);
+            this.lblCID.TabIndex = 59;
+            this.lblCID.Text = "centre ID:";
+            // 
+            // txtCentreId
+            // 
+            this.txtCentreId.Font = new System.Drawing.Font("Perpetua Titling MT", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCentreId.Location = new System.Drawing.Point(145, 21);
+            this.txtCentreId.Name = "txtCentreId";
+            this.txtCentreId.ReadOnly = true;
+            this.txtCentreId.Size = new System.Drawing.Size(39, 22);
+            this.txtCentreId.TabIndex = 58;
+            // 
+            // lblCname
+            // 
+            this.lblCname.AutoSize = true;
+            this.lblCname.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCname.Location = new System.Drawing.Point(46, 64);
+            this.lblCname.Name = "lblCname";
+            this.lblCname.Size = new System.Drawing.Size(88, 13);
+            this.lblCname.TabIndex = 10;
+            this.lblCname.Text = "centre name:";
+            // 
+            // cboCounty
+            // 
+            this.cboCounty.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCounty.FormattingEnabled = true;
+            this.cboCounty.Location = new System.Drawing.Point(409, 115);
+            this.cboCounty.MaxDropDownItems = 5;
+            this.cboCounty.Name = "cboCounty";
+            this.cboCounty.Size = new System.Drawing.Size(131, 21);
+            this.cboCounty.TabIndex = 31;
+            // 
+            // txtAdd2
+            // 
+            this.txtAdd2.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdd2.Location = new System.Drawing.Point(142, 116);
+            this.txtAdd2.Name = "txtAdd2";
+            this.txtAdd2.Size = new System.Drawing.Size(149, 21);
+            this.txtAdd2.TabIndex = 26;
+            // 
+            // txtAdd1
+            // 
+            this.txtAdd1.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdd1.Location = new System.Drawing.Point(142, 88);
+            this.txtAdd1.Name = "txtAdd1";
+            this.txtAdd1.Size = new System.Drawing.Size(149, 21);
+            this.txtAdd1.TabIndex = 25;
+            // 
+            // lblCounty
+            // 
+            this.lblCounty.AutoSize = true;
+            this.lblCounty.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCounty.Location = new System.Drawing.Point(335, 119);
+            this.lblCounty.Name = "lblCounty";
+            this.lblCounty.Size = new System.Drawing.Size(58, 13);
+            this.lblCounty.TabIndex = 17;
+            this.lblCounty.Text = "county";
+            // 
+            // lblTelNo
+            // 
+            this.lblTelNo.AutoSize = true;
+            this.lblTelNo.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelNo.Location = new System.Drawing.Point(332, 64);
+            this.lblTelNo.Name = "lblTelNo";
+            this.lblTelNo.Size = new System.Drawing.Size(51, 13);
+            this.lblTelNo.TabIndex = 13;
+            this.lblTelNo.Text = "Tel no:";
+            // 
+            // lblAdd2
+            // 
+            this.lblAdd2.AutoSize = true;
+            this.lblAdd2.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdd2.Location = new System.Drawing.Point(48, 119);
+            this.lblAdd2.Name = "lblAdd2";
+            this.lblAdd2.Size = new System.Drawing.Size(66, 13);
+            this.lblAdd2.TabIndex = 16;
+            this.lblAdd2.Text = "Address 2";
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(409, 88);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(131, 21);
+            this.txtEmail.TabIndex = 24;
+            // 
+            // lblAdd1
+            // 
+            this.lblAdd1.AutoSize = true;
+            this.lblAdd1.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAdd1.Location = new System.Drawing.Point(48, 92);
+            this.lblAdd1.Name = "lblAdd1";
+            this.lblAdd1.Size = new System.Drawing.Size(63, 13);
+            this.lblAdd1.TabIndex = 15;
+            this.lblAdd1.Text = "Address 1";
+            // 
+            // lblEcode
+            // 
+            this.lblEcode.AutoSize = true;
+            this.lblEcode.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEcode.Location = new System.Drawing.Point(334, 92);
+            this.lblEcode.Name = "lblEcode";
+            this.lblEcode.Size = new System.Drawing.Size(41, 13);
+            this.lblEcode.TabIndex = 14;
+            this.lblEcode.Text = "email:";
+            // 
+            // txtTelNo
+            // 
+            this.txtTelNo.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelNo.Location = new System.Drawing.Point(409, 60);
+            this.txtTelNo.Name = "txtTelNo";
+            this.txtTelNo.Size = new System.Drawing.Size(131, 21);
+            this.txtTelNo.TabIndex = 23;
+            // 
+            // txtName
+            // 
+            this.txtName.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtName.Location = new System.Drawing.Point(143, 60);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(148, 21);
+            this.txtName.TabIndex = 21;
+            // 
+            // btnRegCentre
+            // 
+            this.btnRegCentre.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegCentre.ForeColor = System.Drawing.Color.Green;
+            this.btnRegCentre.Location = new System.Drawing.Point(545, 227);
+            this.btnRegCentre.Name = "btnRegCentre";
+            this.btnRegCentre.Size = new System.Drawing.Size(99, 27);
+            this.btnRegCentre.TabIndex = 58;
+            this.btnRegCentre.Text = "Register";
+            this.btnRegCentre.UseVisualStyleBackColor = true;
+            this.btnRegCentre.Click += new System.EventHandler(this.btnRegCentre_Click);
+            // 
+            // btnClear
+            // 
+            this.btnClear.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClear.ForeColor = System.Drawing.Color.Red;
+            this.btnClear.Location = new System.Drawing.Point(29, 227);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(97, 27);
+            this.btnClear.TabIndex = 59;
+            this.btnClear.Text = "Clear Form";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Perpetua Titling MT", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(218, 51);
+            this.label1.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(186, 262);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(181, 15);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "new test centre Details";
-            // 
-            // dtpNewCentDate
-            // 
-            this.dtpNewCentDate.Location = new System.Drawing.Point(404, 158);
-            this.dtpNewCentDate.Name = "dtpNewCentDate";
-            this.dtpNewCentDate.Size = new System.Drawing.Size(130, 20);
-            this.dtpNewCentDate.TabIndex = 50;
-            // 
-            // cmbCounty
-            // 
-            this.cmbCounty.FormattingEnabled = true;
-            this.cmbCounty.Location = new System.Drawing.Point(92, 186);
-            this.cmbCounty.Name = "cmbCounty";
-            this.cmbCounty.Size = new System.Drawing.Size(131, 21);
-            this.cmbCounty.TabIndex = 49;
-            // 
-            // tbNewCentAdd2
-            // 
-            this.tbNewCentAdd2.Location = new System.Drawing.Point(92, 160);
-            this.tbNewCentAdd2.Name = "tbNewCentAdd2";
-            this.tbNewCentAdd2.Size = new System.Drawing.Size(201, 20);
-            this.tbNewCentAdd2.TabIndex = 48;
-            // 
-            // tbNewCentAdd1
-            // 
-            this.tbNewCentAdd1.Location = new System.Drawing.Point(92, 130);
-            this.tbNewCentAdd1.Name = "tbNewCentAdd1";
-            this.tbNewCentAdd1.Size = new System.Drawing.Size(201, 20);
-            this.tbNewCentAdd1.TabIndex = 47;
-            // 
-            // tbNewCentEmail
-            // 
-            this.tbNewCentEmail.Location = new System.Drawing.Point(404, 98);
-            this.tbNewCentEmail.Name = "tbNewCentEmail";
-            this.tbNewCentEmail.Size = new System.Drawing.Size(173, 20);
-            this.tbNewCentEmail.TabIndex = 46;
-            // 
-            // tbNewCentTelNo
-            // 
-            this.tbNewCentTelNo.Location = new System.Drawing.Point(92, 216);
-            this.tbNewCentTelNo.Name = "tbNewCentTelNo";
-            this.tbNewCentTelNo.Size = new System.Drawing.Size(142, 20);
-            this.tbNewCentTelNo.TabIndex = 45;
-            // 
-            // tbFname
-            // 
-            this.tbFname.Location = new System.Drawing.Point(444, 130);
-            this.tbFname.Name = "tbFname";
-            this.tbFname.Size = new System.Drawing.Size(28, 20);
-            this.tbFname.TabIndex = 44;
-            // 
-            // tbNewCentName
-            // 
-            this.tbNewCentName.Location = new System.Drawing.Point(109, 98);
-            this.tbNewCentName.Name = "tbNewCentName";
-            this.tbNewCentName.Size = new System.Drawing.Size(184, 20);
-            this.tbNewCentName.TabIndex = 43;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(345, 163);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(37, 13);
-            this.label18.TabIndex = 42;
-            this.label18.Text = "date";
-            this.label18.Click += new System.EventHandler(this.label18_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label17.Location = new System.Drawing.Point(18, 190);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(58, 13);
-            this.label17.TabIndex = 41;
-            this.label17.Text = "county";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(18, 164);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(66, 13);
-            this.label16.TabIndex = 40;
-            this.label16.Text = "Address 2";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(18, 134);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(63, 13);
-            this.label15.TabIndex = 39;
-            this.label15.Text = "Address 1";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(345, 101);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(42, 13);
-            this.label14.TabIndex = 38;
-            this.label14.Text = "e-mail";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(18, 219);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(51, 13);
-            this.label13.TabIndex = 37;
-            this.label13.Text = "Tel no:";
-            // 
-            // tbNewCentStaff
-            // 
-            this.tbNewCentStaff.AutoSize = true;
-            this.tbNewCentStaff.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbNewCentStaff.Location = new System.Drawing.Point(345, 133);
-            this.tbNewCentStaff.Name = "tbNewCentStaff";
-            this.tbNewCentStaff.Size = new System.Drawing.Size(92, 13);
-            this.tbNewCentStaff.TabIndex = 36;
-            this.tbNewCentStaff.Text = "num of staff:";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(15, 102);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 13);
-            this.label10.TabIndex = 35;
-            this.label10.Text = "centre name:";
-            // 
-            // btnRegTest
-            // 
-            this.btnRegTest.Location = new System.Drawing.Point(496, 382);
-            this.btnRegTest.Name = "btnRegTest";
-            this.btnRegTest.Size = new System.Drawing.Size(99, 27);
-            this.btnRegTest.TabIndex = 51;
-            this.btnRegTest.Text = "Register";
-            this.btnRegTest.UseVisualStyleBackColor = true;
-            // 
-            // btnClearNewTest
-            // 
-            this.btnClearNewTest.Location = new System.Drawing.Point(391, 382);
-            this.btnClearNewTest.Name = "btnClearNewTest";
-            this.btnClearNewTest.Size = new System.Drawing.Size(99, 27);
-            this.btnClearNewTest.TabIndex = 52;
-            this.btnClearNewTest.Text = "Clear Form";
-            this.btnClearNewTest.UseVisualStyleBackColor = true;
+            this.label1.Size = new System.Drawing.Size(303, 13);
+            this.label1.TabIndex = 60;
+            this.label1.Text = "Copyright © 2017 by NCT Systems Solutions LTD.";
             // 
             // frmNewCentre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(621, 435);
-            this.Controls.Add(this.btnClearNewTest);
-            this.Controls.Add(this.btnRegTest);
-            this.Controls.Add(this.dtpNewCentDate);
-            this.Controls.Add(this.cmbCounty);
-            this.Controls.Add(this.tbNewCentAdd2);
-            this.Controls.Add(this.tbNewCentAdd1);
-            this.Controls.Add(this.tbNewCentEmail);
-            this.Controls.Add(this.tbNewCentTelNo);
-            this.Controls.Add(this.tbFname);
-            this.Controls.Add(this.tbNewCentName);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.tbNewCentStaff);
-            this.Controls.Add(this.label10);
+            this.ClientSize = new System.Drawing.Size(675, 280);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnClear);
+            this.Controls.Add(this.btnRegCentre);
+            this.Controls.Add(this.grbOdetails);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmNewCentre";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCTSYS - New Test Centre";
+            this.Load += new System.EventHandler(this.frmNewCentre_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.grbOdetails.ResumeLayout(false);
+            this.grbOdetails.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,24 +301,23 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem backToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.GroupBox grbOdetails;
+        private System.Windows.Forms.TextBox txtCentreId;
+        private System.Windows.Forms.Label lblCname;
+        private System.Windows.Forms.ComboBox cboCounty;
+        private System.Windows.Forms.TextBox txtAdd2;
+        private System.Windows.Forms.TextBox txtAdd1;
+        private System.Windows.Forms.Label lblCounty;
+        private System.Windows.Forms.Label lblTelNo;
+        private System.Windows.Forms.Label lblAdd2;
+        private System.Windows.Forms.TextBox txtEmail;
+        private System.Windows.Forms.Label lblAdd1;
+        private System.Windows.Forms.Label lblEcode;
+        private System.Windows.Forms.TextBox txtTelNo;
+        private System.Windows.Forms.TextBox txtName;
+        private System.Windows.Forms.Label lblCID;
+        private System.Windows.Forms.Button btnRegCentre;
+        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dtpNewCentDate;
-        private System.Windows.Forms.ComboBox cmbCounty;
-        private System.Windows.Forms.TextBox tbNewCentAdd2;
-        private System.Windows.Forms.TextBox tbNewCentAdd1;
-        private System.Windows.Forms.TextBox tbNewCentEmail;
-        private System.Windows.Forms.TextBox tbNewCentTelNo;
-        private System.Windows.Forms.TextBox tbFname;
-        private System.Windows.Forms.TextBox tbNewCentName;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label tbNewCentStaff;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Button btnRegTest;
-        private System.Windows.Forms.Button btnClearNewTest;
     }
 }

@@ -12,20 +12,33 @@ namespace NCTSYS
         //instance variables
         private string regNo;
         private string ppsn;
-
+        private string regDate;
         //no arguement constructor
         public Registration()
         {
-            regNo = " ";
-            ppsn = " ";
+            regNo = "";
+            regDate = "";
+            ppsn = "";
         }
 
-        public Registration(String RegNo, String PPSN)
+        public Registration(String RegNo, String RegDate, String PPSN)
         {
             regNo = RegNo;
+            regDate = RegDate;
             ppsn = PPSN;
         }
-
+        public String getRegNo()
+        {
+            return regNo;
+        }
+        public String getPPSN()
+        {
+            return ppsn;
+        }
+        public String getRegDate()
+        {
+            return regDate;
+        }
 
         public void regOwnership()
         {
@@ -34,9 +47,9 @@ namespace NCTSYS
             myConn.Open();
 
             //Define SQL Query
-            String currantDate = System.DateTime.Today.ToString("dd-MMM-yyyy");
+            
 
-            String strSQL = "INSERT INTO REGISTRATIONS VALUES('" + this.regNo + "','" + currantDate + "','" + this.ppsn + "')";
+            String strSQL = "INSERT INTO REGISTRATIONS VALUES('" + this.regNo + "','" + this.regDate + "','" + this.ppsn + "')";
             //Execute SQL Query 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
             cmd.ExecuteNonQuery();
@@ -44,6 +57,6 @@ namespace NCTSYS
             //Close DB
             myConn.Close();
         }
-        
+
     }
 }

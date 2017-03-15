@@ -39,7 +39,6 @@ namespace NCTSYS
         //Load form components
         private void frmReg_Load(object sender, EventArgs e)
         {
-            //DataSet ds = new DataSet();
             loadMake();
             loadModels();
             loadCounties();
@@ -58,6 +57,7 @@ namespace NCTSYS
             dtpDob.MaxDate = DateTime.Today.AddYears(-17);
             dtpDob.MinDate = DateTime.Today.AddYears(-130);
             dtpFregdate.MaxDate = DateTime.Now;
+            dtpRegDate.MaxDate = DateTime.Now;
 
             txtRegNo.CharacterCasing = CharacterCasing.Upper;
             txtPPSN.CharacterCasing = CharacterCasing.Upper;
@@ -202,11 +202,11 @@ namespace NCTSYS
                 }
                 
                 //instantiate Registration Object
-                Registration newRegistration = new Registration(txtRegNo.Text.ToUpper(), txtPPSN.Text.ToUpper());
+                Registration newRegistration = new Registration(txtRegNo.Text.ToUpper(), dtpRegDate.Text, txtPPSN.Text.ToUpper());
 
-                if(isSamePurchaseDate() == true)
+                if(isProcessed(txtRegNo.Text, dtpRegDate.Text) == true)
                 {
-                    MessageBox.Show("Ownership Transfer not posible on the same date of Registration ", "Confirmation",
+                    MessageBox.Show("Already processed !", "Confirmation",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clearReg();
                     return; 
@@ -439,15 +439,16 @@ namespace NCTSYS
             cboFuel.Items.Add("PETROL");
             cboFuel.Items.Add("DIESEL");
         }
-        public Boolean isSamePurchaseDate()
+        public Boolean isProcessed(String RegNo, String RegDate)
         {
-            
+            Boolean answer = false;
+
             //Connect to the DB
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
             myConn.Open();
 
             //Define SQL Query
-            String strSQL = "SELECT MAX(REG_DATE) FROM Registrations WHERE Reg_No = '" + txtRegNo.Text + "'";
+            String strSQL = "SELECT * FROM Registrations WHERE Reg_No = '" + RegNo + "' AND Reg_Date = '" + RegDate + "'";
 
             //Execute SQL Query 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
@@ -456,15 +457,11 @@ namespace NCTSYS
             //String date;
             if (dr.Read())
             {
-                DateTime date = dr.GetDateTime(0);
-                if (date == DateTime.Now.Date)
-                {
-                    return true;
-                } 
+                answer = true;
             }
             //Close DB
             myConn.Close();
-            return false;
+            return answer;
         }
     }
 }

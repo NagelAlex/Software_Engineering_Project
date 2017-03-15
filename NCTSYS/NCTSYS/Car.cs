@@ -92,7 +92,7 @@ namespace NCTSYS
             myConn.Close();
         }
         
-        public static Boolean isRegistered(String regNo)
+        /*public static Boolean isRegistered(String regNo)
         {
             Boolean answer = true;
 
@@ -116,7 +116,7 @@ namespace NCTSYS
             myConn.Close();
             return answer;
         
-        }
+        }*/
         public void getCarDetails(String regNo)
         {
             //Connect to the DB

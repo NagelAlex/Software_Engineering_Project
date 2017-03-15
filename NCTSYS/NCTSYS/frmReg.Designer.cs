@@ -65,6 +65,8 @@
             this.btnCarSubmit = new System.Windows.Forms.Button();
             this.btbNext = new System.Windows.Forms.Button();
             this.grbOdetails = new System.Windows.Forms.GroupBox();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.dtpRegDate = new System.Windows.Forms.DateTimePicker();
             this.chkExists = new System.Windows.Forms.CheckBox();
             this.btnRegCar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -216,7 +218,7 @@
             // 
             this.lblAdd1.AutoSize = true;
             this.lblAdd1.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdd1.Location = new System.Drawing.Point(323, 63);
+            this.lblAdd1.Location = new System.Drawing.Point(328, 51);
             this.lblAdd1.Name = "lblAdd1";
             this.lblAdd1.Size = new System.Drawing.Size(63, 13);
             this.lblAdd1.TabIndex = 15;
@@ -226,7 +228,7 @@
             // 
             this.lblAdd2.AutoSize = true;
             this.lblAdd2.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAdd2.Location = new System.Drawing.Point(323, 91);
+            this.lblAdd2.Location = new System.Drawing.Point(328, 79);
             this.lblAdd2.Name = "lblAdd2";
             this.lblAdd2.Size = new System.Drawing.Size(66, 13);
             this.lblAdd2.TabIndex = 16;
@@ -236,7 +238,7 @@
             // 
             this.lblCounty.AutoSize = true;
             this.lblCounty.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCounty.Location = new System.Drawing.Point(323, 120);
+            this.lblCounty.Location = new System.Drawing.Point(329, 108);
             this.lblCounty.Name = "lblCounty";
             this.lblCounty.Size = new System.Drawing.Size(58, 13);
             this.lblCounty.TabIndex = 17;
@@ -277,7 +279,7 @@
             // txtAdd1
             // 
             this.txtAdd1.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdd1.Location = new System.Drawing.Point(397, 59);
+            this.txtAdd1.Location = new System.Drawing.Point(402, 47);
             this.txtAdd1.Name = "txtAdd1";
             this.txtAdd1.Size = new System.Drawing.Size(191, 21);
             this.txtAdd1.TabIndex = 25;
@@ -285,7 +287,7 @@
             // txtAdd2
             // 
             this.txtAdd2.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAdd2.Location = new System.Drawing.Point(397, 87);
+            this.txtAdd2.Location = new System.Drawing.Point(402, 75);
             this.txtAdd2.Name = "txtAdd2";
             this.txtAdd2.Size = new System.Drawing.Size(191, 21);
             this.txtAdd2.TabIndex = 26;
@@ -331,7 +333,7 @@
             // 
             this.cboCounty.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCounty.FormattingEnabled = true;
-            this.cboCounty.Location = new System.Drawing.Point(397, 116);
+            this.cboCounty.Location = new System.Drawing.Point(402, 104);
             this.cboCounty.MaxDropDownItems = 5;
             this.cboCounty.Name = "cboCounty";
             this.cboCounty.Size = new System.Drawing.Size(121, 21);
@@ -440,6 +442,8 @@
             // grbOdetails
             // 
             this.grbOdetails.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("grbOdetails.BackgroundImage")));
+            this.grbOdetails.Controls.Add(this.lblDate);
+            this.grbOdetails.Controls.Add(this.dtpRegDate);
             this.grbOdetails.Controls.Add(this.chkExists);
             this.grbOdetails.Controls.Add(this.btnRegCar);
             this.grbOdetails.Controls.Add(this.lblFname);
@@ -467,6 +471,24 @@
             this.grbOdetails.TabStop = false;
             this.grbOdetails.Text = "Owner Details";
             this.grbOdetails.Visible = false;
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Font = new System.Drawing.Font("Perpetua Titling MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDate.Location = new System.Drawing.Point(288, 143);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(109, 13);
+            this.lblDate.TabIndex = 57;
+            this.lblDate.Text = "Ownership Date:";
+            // 
+            // dtpRegDate
+            // 
+            this.dtpRegDate.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpRegDate.Location = new System.Drawing.Point(403, 137);
+            this.dtpRegDate.Name = "dtpRegDate";
+            this.dtpRegDate.Size = new System.Drawing.Size(121, 21);
+            this.dtpRegDate.TabIndex = 56;
             // 
             // chkExists
             // 
@@ -687,5 +709,7 @@
         private System.Windows.Forms.ComboBox cboFuel;
         private System.Windows.Forms.CheckBox chkExists;
         private System.Windows.Forms.CheckBox chkCar;
+        private System.Windows.Forms.Label lblDate;
+        private System.Windows.Forms.DateTimePicker dtpRegDate;
     }
 }
