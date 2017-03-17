@@ -39,26 +39,29 @@ namespace NCTSYS
         //Load form components
         private void frmReg_Load(object sender, EventArgs e)
         {
+            //loading makes, models, counties, engine sizes, colors, fuel types
             loadMake();
             loadModels();
             loadCounties();
             loadEngine();
             loadColor();
             loadFuel();
-   
-
+            // set combo boxes selectable only
             cboColour.DropDownStyle = ComboBoxStyle.DropDownList;
             cboCounty.DropDownStyle = ComboBoxStyle.DropDownList;
             cboEngine.DropDownStyle = ComboBoxStyle.DropDownList;
             cboFuel.DropDownStyle = ComboBoxStyle.DropDownList;
             cboMake.DropDownStyle = ComboBoxStyle.DropDownList;
             cboModel.DropDownStyle = ComboBoxStyle.DropDownList;
-
+            //set minumum date of DOB to 17
             dtpDob.MaxDate = DateTime.Today.AddYears(-17);
             dtpDob.MinDate = DateTime.Today.AddYears(-130);
+            //set date, cannot be in the future
             dtpFregdate.MaxDate = DateTime.Now;
             dtpRegDate.MaxDate = DateTime.Now;
 
+            
+            //casting to upper case
             txtRegNo.CharacterCasing = CharacterCasing.Upper;
             txtPPSN.CharacterCasing = CharacterCasing.Upper;
             txtEmail.CharacterCasing = CharacterCasing.Lower;
@@ -83,143 +86,13 @@ namespace NCTSYS
                 txtRegNo.Focus();
                 return;
             }
-           
+            //loading fillCarDetails method
             fillCarDetails();
 
-                grbCarDetails.Visible = true;
-                txtRegNo.ReadOnly = true;
-                btnCheckReg.Visible = false;
-                btnClearCarReg.Visible = true;
-            
-        }
-
-        //Car details validation
-        private void btnCarSubmit_Click(object sender, EventArgs e)
-        {
-            if (cboMake.Text == "" || cboModel.Text == "" || cboEngine.Text == "" || cboColour.Text == "" || cboFuel.Text == "")
-            {
-                MessageBox.Show("All fields must be filled !!!", "Confirmation",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                grbPPSN.Visible = true;
-                btnCarSubmit.Visible = false;
-            }
-        }
-
-        //PPSN check and validation
-        private void btnCheckPPSN_Click(object sender, EventArgs e)
-        {
-            if (txtPPSN.Text == "")
-            {
-                MessageBox.Show("Please Enter your PPSN !", "Confirmation",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else if (NCTSYS.Owner.isValidPPSN(txtPPSN.Text) == false)
-            {
-                MessageBox.Show("PPS Number you entered is invalid !\nPlease Re-enter", "Confirmation",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                //get Owner details
-                Owner aOwner = new Owner();
-                aOwner.getOwnerDetails(txtPPSN.Text);
-
-                //if owner not found set checkbox = false
-                if(aOwner.getPPSN().Equals(""))
-                {
-                    chkExists.Checked = false;
-                    //set form controls enabled = true
-
-                }
-                else
-                {
-                    chkExists.Checked = true;
-                    //load owner details onto the form and set enabled = false
-
-                    txtSname.Text = aOwner.getSname();
-                    txtSname.Enabled = false;
-                    txtFname.Text = aOwner.getFname();
-                    txtFname.Enabled = false;
-                    dtpDob.Text = aOwner.getDOB();
-                    dtpDob.Enabled = false;
-                    txtTelNo.Text = aOwner.getTelNum();
-                    txtTelNo.Enabled = false;
-                    txtEmail.Text = aOwner.getEmail();
-                    txtEmail.Enabled = false;
-                    txtAdd1.Text = aOwner.getAdd1();
-                    txtAdd1.Enabled = false;
-                    txtAdd2.Text = aOwner.getAdd2();
-                    txtAdd2.Enabled = false;
-                    cboCounty.Text = aOwner.getCounty();
-                    cboCounty.Enabled = false;
-                }
-
-                //if owner not found set check box = false
-                
-                grbOdetails.Visible = true;
-                txtPPSN.ReadOnly = true;
-                btnCheckPPSN.Visible = false;
-            }
-        }
-
-        //Clear form
-        private void btnClearCarReg_Click_1(object sender, EventArgs e)
-        {
-            clearReg();
-        }
-
-        //Register + Owner details validation
-        private void btnRegCar_Click(object sender, EventArgs e)
-        {
-            if (txtSname.Text == "" || txtFname.Text == "" || txtEmail.Text == "" || txtAdd1.Text == "" || txtAdd2.Text == "" || cboCounty.Text == "" || txtTelNo.Text == "")
-            {
-                MessageBox.Show("All fields must be filled !!!", "Confirmation",
-                MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else if (NCTSYS.Owner.isValidEmail(txtEmail.Text) == false)
-            {
-                MessageBox.Show("Email address you entered is invalid !\nPlease Re-enter", "Confirmation",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            else
-            {
-                //Insert data into cars, owners and registrations tables
-                //instantiate Car Object
-                if (chkCar.Checked == false)
-                {
-                    char carStatus = 'A';
-                    Car newCar = new Car(txtRegNo.Text.ToUpper(), cboMake.Text, cboModel.Text, Convert.ToDouble(cboEngine.Text), cboColour.Text, cboFuel.Text, carStatus, dtpFregdate.Text);
-                    newCar.regCar();
-                }
-                //instantiate Owner Object
-                if (chkExists.Checked == false)
-                {
-                    Owner newOwner = new Owner(txtPPSN.Text.ToUpper(), txtSname.Text, txtFname.Text, dtpDob.Text, txtTelNo.Text, txtEmail.Text.ToLower(), txtAdd1.Text, txtAdd2.Text, cboCounty.Text);
-                    newOwner.regOwner();
-                }
-                
-                //instantiate Registration Object
-                Registration newRegistration = new Registration(txtRegNo.Text.ToUpper(), dtpRegDate.Text, txtPPSN.Text.ToUpper());
-
-                if(isProcessed(txtRegNo.Text, dtpRegDate.Text) == true)
-                {
-                    MessageBox.Show("Already processed !", "Confirmation",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    clearReg();
-                    return; 
-                }
-
-                newRegistration.regOwnership();
-
-                //Display confirmation message
-                MessageBox.Show("Registration Number: " + txtRegNo.Text.Trim() + " is now registered" + "\nThank you !", "Confirmation",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
-                // Clear registration form
-                clearReg();
-            }
+            grbCarDetails.Visible = true;
+            txtRegNo.ReadOnly = true;
+            btnCheckReg.Visible = false;
+            btnClearCarReg.Visible = true;
         }
         public void fillCarDetails()
         {
@@ -230,7 +103,6 @@ namespace NCTSYS
             if (car.getMake().Equals(""))
             {
                 chkCar.Checked = false;
-                   
             }
 
             //if car exists
@@ -244,7 +116,7 @@ namespace NCTSYS
                 cboMake.SelectedIndex = 0;
                 while (!cboMake.Text.Equals(strMake))
                 {
-                    cboMake.SelectedIndex++;  
+                    cboMake.SelectedIndex++;
                 }
 
                 //insert existing  car Model in to combo box
@@ -289,9 +161,148 @@ namespace NCTSYS
                 cboEngine.Enabled = false;
                 cboFuel.Enabled = false;
                 dtpFregdate.Enabled = false;
-
             }
         }
+
+        //Car details validation
+        private void btnCarSubmit_Click(object sender, EventArgs e)
+        {
+            if (cboMake.Text == "" || cboModel.Text == "" || cboEngine.Text == "" || cboColour.Text == "" || cboFuel.Text == "")
+            {
+                MessageBox.Show("All fields must be filled !!!", "Confirmation",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                grbPPSN.Visible = true;
+                btnCarSubmit.Visible = false;
+            }
+        }
+
+        //PPSN check and validation
+        private void btnCheckPPSN_Click(object sender, EventArgs e)
+        {
+            if (txtPPSN.Text == "")
+            {
+                MessageBox.Show("Please Enter your PPSN !", "Confirmation",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (NCTSYS.Owner.isValidPPSN(txtPPSN.Text) == false)
+            {
+                MessageBox.Show("PPS Number you entered is invalid !\nPlease Re-enter", "Confirmation",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                // set minimum date for registration transfer
+                dtpRegDate.MinDate = Registration.getCurrentOwnerDate(txtRegNo.Text.ToUpper().Trim());
+                //get Owner details
+                Owner aOwner = new Owner();
+                aOwner.getOwnerDetails(txtPPSN.Text);
+
+                //if owner not found set checkbox = false
+                if(aOwner.getPPSN().Equals(""))
+                {
+                    chkExists.Checked = false;
+                    //set form controls enabled = true
+
+                }
+                else
+                {
+                    //if owner found set check box = true
+                    chkExists.Checked = true;
+                    //load owner details onto the form and set enabled = false
+
+                    txtSname.Text = aOwner.getSname();
+                    txtSname.Enabled = false;
+                    txtFname.Text = aOwner.getFname();
+                    txtFname.Enabled = false;
+                    dtpDob.Text = aOwner.getDOB();
+                    dtpDob.Enabled = false;
+                    txtTelNo.Text = aOwner.getTelNum();
+                    txtTelNo.Enabled = false;
+                    txtEmail.Text = aOwner.getEmail();
+                    txtEmail.Enabled = false;
+                    txtAdd1.Text = aOwner.getAdd1();
+                    txtAdd1.Enabled = false;
+                    txtAdd2.Text = aOwner.getAdd2();
+                    txtAdd2.Enabled = false;
+                    cboCounty.Text = aOwner.getCounty();
+                    cboCounty.Enabled = false;
+                }
+                
+                grbOdetails.Visible = true;
+                txtPPSN.ReadOnly = true;
+                btnCheckPPSN.Visible = false;
+            }
+        }
+        
+
+        //Clear form
+        private void btnClearCarReg_Click_1(object sender, EventArgs e)
+        {
+            clearReg();
+        }
+
+        //Register + Owner details validation
+        private void btnRegCar_Click(object sender, EventArgs e)
+        {
+            if (txtSname.Text == "" || txtFname.Text == "" || txtEmail.Text == "" || txtAdd1.Text == "" || txtAdd2.Text == "" || cboCounty.Text == "" || txtTelNo.Text == "")
+            {
+                MessageBox.Show("All fields must be filled !!!", "Confirmation",
+                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            if (NCTSYS.Owner.isValidEmail(txtEmail.Text) == false)
+            {
+                MessageBox.Show("Email address you entered is invalid !\nPlease Re-enter", "Confirmation",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (dtpRegDate.Value.Date < dtpFregdate.Value.Date)
+            {
+                MessageBox.Show("Date of ownership transfer exids manufacture date !\nPlease Re-select", "Confirmation",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            else
+            {
+                //Insert data into cars, owners and registrations tables
+                //instantiate Car Object
+                if (chkCar.Checked == false)
+                {
+                    char carStatus = 'A';
+                    Car newCar = new Car(txtRegNo.Text.ToUpper(), cboMake.Text, cboModel.Text, Convert.ToDouble(cboEngine.Text), cboColour.Text, cboFuel.Text, carStatus, dtpFregdate.Text);
+                    newCar.regCar();
+                }
+                //instantiate Owner Object
+                if (chkExists.Checked == false)
+                {
+                    Owner newOwner = new Owner(txtPPSN.Text.ToUpper(), txtSname.Text, txtFname.Text, dtpDob.Text, txtTelNo.Text, txtEmail.Text.ToLower(), txtAdd1.Text, txtAdd2.Text, cboCounty.Text);
+                    newOwner.regOwner();
+                }
+                
+                //instantiate Registration Object
+                Registration newRegistration = new Registration(txtRegNo.Text.ToUpper(), dtpRegDate.Text, txtPPSN.Text.ToUpper());
+
+                if(isProcessed(txtRegNo.Text, dtpRegDate.Text) == true)
+                {
+                    MessageBox.Show("Already processed !", "Confirmation",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clearReg();
+                    return; 
+                }
+
+                newRegistration.regOwnership();
+
+                //Display confirmation message
+                MessageBox.Show("Registration Number: " + txtRegNo.Text.Trim() + " is now registered" + "\nThank you !", "Confirmation",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Clear registration form
+                clearReg();
+            }
+        }
+        
 
         //load makes from DB
         public void loadMake()

@@ -34,7 +34,11 @@ namespace NCTSYS
         {
             Application.Exit();
         }
-
+        private void frmHistory_Load(object sender, EventArgs e)
+        {
+            grdHistory.AllowUserToAddRows = false;
+            this.grdHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+        }
         private void btnCheckReg_Click(object sender, EventArgs e)
         {
             if (txtRegNo.Text == "")
@@ -54,11 +58,6 @@ namespace NCTSYS
 
             getRegHistory(txtRegNo.Text.ToUpper());
 
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            clearForm();
         }
         public void getRegHistory(String regNo)
         {
@@ -115,11 +114,15 @@ namespace NCTSYS
             txtRegNo.Text = String.Empty;
             txtRegNo.ReadOnly = false;
         }
-
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            clearForm();
+        }
         private void btnPrint_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Printing ...... ", "Confirmation",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
     }
 }

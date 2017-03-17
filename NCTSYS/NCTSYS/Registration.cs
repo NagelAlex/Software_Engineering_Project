@@ -20,7 +20,6 @@ namespace NCTSYS
             regDate = "";
             ppsn = "";
         }
-
         public Registration(String RegNo, String RegDate, String PPSN)
         {
             regNo = RegNo;
@@ -47,8 +46,6 @@ namespace NCTSYS
             myConn.Open();
 
             //Define SQL Query
-            
-
             String strSQL = "INSERT INTO REGISTRATIONS VALUES('" + this.regNo + "','" + this.regDate + "','" + this.ppsn + "')";
             //Execute SQL Query 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
@@ -58,5 +55,33 @@ namespace NCTSYS
             myConn.Close();
         }
 
+        public static DateTime getCurrentOwnerDate(string regNo)
+        {
+            DateTime ownerShipDate = DateTime.Today.AddYears(-200);
+            //Connect to the DB
+            OracleConnection myConn = new OracleConnection(DBConnect.oradb);
+            myConn.Open();
+
+            //Define SQL Query
+            String strSQL = "SELECT MAX(REG_DATE) FROM REGISTRATIONS WHERE REG_NO = '" + regNo + "'";
+
+            //Execute SQL Query 
+            OracleCommand cmd = new OracleCommand(strSQL, myConn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            dr.Read();
+
+            if (dr.HasRows)
+            {
+                ownerShipDate = dr.GetDateTime(0);
+            }
+            else
+
+            // close DB
+            myConn.Close();
+
+            return ownerShipDate;
+        }
     }
 }

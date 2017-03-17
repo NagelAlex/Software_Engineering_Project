@@ -91,32 +91,6 @@ namespace NCTSYS
             //Close DB
             myConn.Close();
         }
-        
-        /*public static Boolean isRegistered(String regNo)
-        {
-            Boolean answer = true;
-
-            //Connect to the DB
-            OracleConnection myConn = new OracleConnection(DBConnect.oradb);
-            myConn.Open();
-
-            //Define SQL Query
-            String strSQL = "SELECT Reg_No FROM CARS WHERE Reg_No = '" + regNo + "'";
-
-            //Execute SQL Query 
-            OracleCommand cmd = new OracleCommand(strSQL, myConn);
-
-            OracleDataReader dr = cmd.ExecuteReader();
-            if(dr.Read())
-
-            if (dr.IsDBNull(0))
-
-                answer = true;
-
-            myConn.Close();
-            return answer;
-        
-        }*/
         public void getCarDetails(String regNo)
         {
             //Connect to the DB

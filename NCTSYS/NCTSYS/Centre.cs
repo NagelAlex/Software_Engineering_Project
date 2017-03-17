@@ -120,7 +120,50 @@ namespace NCTSYS
             myConn.Close();
 
             return nextID;
+        }
+        public void getCentreDetails(int centre_id)
+        {
+            //Connect to the DB
+            OracleConnection myConn = new OracleConnection(DBConnect.oradb);
+            myConn.Open();
 
+            //Define SQL Query
+            String strSQL = "SELECT * FROM CENTRES WHERE CENTRE_ID = " + centre_id;
+
+            //Execute SQL Query 
+            OracleCommand cmd = new OracleCommand(strSQL, myConn);
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            //if there are rows in the datareader
+            if (dr.Read())
+            {
+                //instantiate object instance variables
+                this.CentreId = dr.GetInt32(0);
+                this.CentreName = dr.GetString(1);
+                this.add1 = dr.GetString(2);
+                this.add2 = dr.GetString(3);
+                this.telNo = dr.GetString(4);
+                this.email = dr.GetString(5);
+                this.county = dr.GetString(6);
+
+                myConn.Close();
+            }
+        }
+        public void deRegister(int center_id)
+        {
+            //Connect to the DB
+            OracleConnection myConn = new OracleConnection(DBConnect.oradb);
+            myConn.Open();
+
+            //Define SQL Query
+            String strSQL = "UPDATE CENTRES SET STATUS = 'I' WHERE CENTRE_ID = '" + center_id + "'";
+
+            //Execute SQL Query 
+            OracleCommand cmd = new OracleCommand(strSQL, myConn);
+
+            OracleDataReader dr = cmd.ExecuteReader();
+
+            myConn.Close();
         }
     }
 }

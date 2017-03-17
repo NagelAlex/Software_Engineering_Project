@@ -208,6 +208,7 @@
             this.Name = "frmHistory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "NCTSYS - Car History";
+            this.Load += new System.EventHandler(this.frmHistory_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.grbRegCheck.ResumeLayout(false);

@@ -57,7 +57,7 @@ namespace NCTSYS
             {
                 //instantiate Centre Object
                 char status = 'A';
-                Centre aCentre = new Centre(Convert.ToInt32(txtCentreId.Text), txtName.Text, txtAdd1.Text, txtAdd2.Text, txtTelNo.Text, txtEmail.Text.ToLower(), cboCounty.Text, status);
+                Centre aCentre = new Centre(Convert.ToInt32(txtCentreId.Text), txtName.Text, txtAdd1.Text, txtAdd2.Text, txtTelNo.Text, txtEmail.Text.ToLower(), cboCounty.SelectedItem.ToString().ToUpper(), status);
 
                 aCentre.regCentre();
 
