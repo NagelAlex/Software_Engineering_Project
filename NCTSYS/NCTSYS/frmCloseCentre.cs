@@ -67,13 +67,14 @@ namespace NCTSYS
             DataSet ds = new DataSet();
 
             oda.Fill(ds);
+            //if no centres was found
             if (ds.Tables[0].Rows.Count == 0)
             {
-                MessageBox.Show("Active NCT Test Centres was not found ! in county " + county, "Confirmation",
+                MessageBox.Show("No active NCT Test Centres was found ! in Co." + county, "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-
+            //fill data grid
             grdCentre.DataSource = ds.Tables[0];
 
             // close DB
@@ -109,6 +110,7 @@ namespace NCTSYS
             MessageBox.Show("The Test Centre is now De-Registered", "Confirmation",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
             clearForm();
+            loadCounties();
         }
         public void loadCounties()
         {
@@ -136,7 +138,13 @@ namespace NCTSYS
             grbCentreDetails.Visible = false;
             btnClear.Visible = false;
             btnDeRegCentre.Visible = false;
+            cboCounty.Items.Clear();
+            loadCounties();
         }
 
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            clearForm();
+        }
     }
 }

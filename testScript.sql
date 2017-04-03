@@ -16,10 +16,12 @@ SELECT * FROM Registrations
 WHERE REG_NO = '06-KY-27374';
  
 INSERT INTO CARS
-VALUES ('06-KY-274','Opel','Omega',2499,'Gold','A','21-DEC-2001');
+VALUES ('11-KY-111','Opel','Omega',2.2,'Petrol','Gold','A','30-APR-2011');
+
+COMMIT;
 
 INSERT INTO OWNERS
-VALUES ('9897178K','Declan','Buckley','21-DEC-1979','0872567551','hgyusgd.hgdws@gmail.com','5 Ath Solas','Milltown','Co.Kerry');
+VALUES ('1111111K','Declan','Buckley','21-DEC-1979','0872567551','hgyusgd.hgdws@gmail.com','5 Ath Solas','Milltown','Kerry');
 
 INSERT INTO Registrations
 VALUES ('06-KY-27374','13-FEB-2017','9897178K');
@@ -32,6 +34,9 @@ WHERE REG_NO = '00-D-00';
 
 SELECT * from CARS;
 SELECT * from Owners;
+SELECT * from Centres;
+
+commit;
 
 SELECT DISTINCT Make
 FROM MakeModels
@@ -43,3 +48,37 @@ WHERE Make = 'OPEL';
 
 SELECT *
 FROM EngineSizes;
+
+SELECT C.REG_NO, CAR_MAKE, CAR_MODEL, SURNAME, FORENAME, TEL_NO, REG_DATE
+FROM CARS C, OWNERS O, REGISTRATIONS R
+WHERE C.REG_NO = R.REG_NO AND 
+      R.PPSN = O.PPSN  AND
+      C.REG_NO = '00-G-00'
+ORDER BY REG_DATE DESC;
+
+SELECT * FROM REGISTRATIONS;
+
+SELECT R.REG_NO, O.EMAIL
+FROM OWNERS O, REGISTRATIONS R
+WHERE R.PPSN = O.PPSN  AND 
+      Add_Months((MAX(Reg_Date)),12) = SYSDATE;
+      
+      
+
+      ;
+
+
+
+
+SELECT Add_Months(First_Reg_Date,48), Add_Months(SysDate,1)
+FROM Cars;
+
+SELECT C_NAME AS NAME, ADD1, ADD2, TEL_NO AS Phone
+FROM CENTRES 
+WHERE CENTRE_ID = 1;
+
+SELECT * FROM CARS;
+
+UPDATE CARS
+SET CURRENTOWNER = '0000000SD' 
+WHERE  REG_NO = '00-Q-11';

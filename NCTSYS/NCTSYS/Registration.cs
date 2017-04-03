@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Oracle.ManagedDataAccess.Client;
+using System.Data;
+using System.Windows.Forms;
 
 namespace NCTSYS
 {
@@ -72,7 +74,7 @@ namespace NCTSYS
 
             dr.Read();
 
-            if (dr.HasRows)
+            if (!dr.IsDBNull(0))
             {
                 ownerShipDate = dr.GetDateTime(0);
             }
@@ -83,5 +85,6 @@ namespace NCTSYS
 
             return ownerShipDate;
         }
+      
     }
 }

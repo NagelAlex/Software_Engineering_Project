@@ -138,7 +138,7 @@ namespace NCTSYS
             if (dr.Read())
             {
                 //instantiate object instance variables
-                this.CentreId = dr.GetInt32(0);
+                this.CentreId = dr.GetInt16(0);
                 this.CentreName = dr.GetString(1);
                 this.add1 = dr.GetString(2);
                 this.add2 = dr.GetString(3);

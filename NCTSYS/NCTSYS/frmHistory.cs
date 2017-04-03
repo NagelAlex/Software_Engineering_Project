@@ -36,6 +36,7 @@ namespace NCTSYS
         }
         private void frmHistory_Load(object sender, EventArgs e)
         {
+            txtRegNo.CharacterCasing = CharacterCasing.Upper;
             grdHistory.AllowUserToAddRows = false;
             this.grdHistory.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
@@ -48,7 +49,7 @@ namespace NCTSYS
                 txtRegNo.Focus();
                 return;
             }
-            if (Car.isValidReg(txtRegNo.Text) == false)
+            if (Util.isValidReg(txtRegNo.Text) == false)
             {
                 MessageBox.Show("Registration Number you entered is invalid !\nPlease Re-enter", "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -120,9 +121,22 @@ namespace NCTSYS
         }
         private void btnPrint_Click(object sender, EventArgs e)
         {
+            PrintDialog printDialog1 = new PrintDialog();
+            printDialog1.Document = printDocument1;
+            DialogResult result = printDialog1.ShowDialog();
+            if (printDocument1.PrinterSettings.IsValid)
+            {
+                printDocument1.Print();
+            }
             MessageBox.Show("Printing ...... ", "Confirmation",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            Bitmap bmp = new Bitmap(this.grdHistory.Width, this.grdHistory.Height);
+            this.grdHistory.DrawToBitmap(bmp, this.grdHistory.ClientRectangle);
+            e.Graphics.DrawImage(bmp, 0, 0);
+        }
     }
 }

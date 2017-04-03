@@ -38,7 +38,7 @@ namespace NCTSYS
         {
             loadCounties();
             cboCounty.DropDownStyle = ComboBoxStyle.DropDownList;
-            txtCentreId.Text = Centre.nextCentreID().ToString("00");
+            txtCentreId.Text = Centre.nextCentreID().ToString("000");
         }
         //Register + Centre details validation
         private void btnRegCentre_Click(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace NCTSYS
                 MessageBox.Show("All fields must be filled !!!", "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else if (NCTSYS.Owner.isValidEmail(txtEmail.Text) == false)
+            else if (Util.isValidEmail(txtEmail.Text) == false)
             {
                 MessageBox.Show("Email address you entered is invalid !\nPlease Re-enter", "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -57,8 +57,8 @@ namespace NCTSYS
             {
                 //instantiate Centre Object
                 char status = 'A';
-                Centre aCentre = new Centre(Convert.ToInt32(txtCentreId.Text), txtName.Text, txtAdd1.Text, txtAdd2.Text, txtTelNo.Text, txtEmail.Text.ToLower(), cboCounty.SelectedItem.ToString().ToUpper(), status);
-
+                Centre aCentre = new Centre(Convert.ToInt32(txtCentreId.Text), txtName.Text.ToUpper(), txtAdd1.Text.ToUpper(), txtAdd2.Text.ToUpper(), txtTelNo.Text, txtEmail.Text.ToLower(), cboCounty.SelectedItem.ToString().ToUpper(), status);
+                //call regCentre method
                 aCentre.regCentre();
 
                 //Display confirmation message
@@ -91,7 +91,7 @@ namespace NCTSYS
         }
         private void clearForm()
         {
-            txtCentreId.Text = Centre.nextCentreID().ToString("00");
+            txtCentreId.Text = Centre.nextCentreID().ToString("000");
             txtName.Text = String.Empty;
             txtAdd1.Text = String.Empty;
             txtAdd2.Text = String.Empty;

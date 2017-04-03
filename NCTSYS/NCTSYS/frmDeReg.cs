@@ -14,7 +14,7 @@ namespace NCTSYS
     {
         private Form parent;
 
-        Car aCar = new Car();
+        
         public frmDeReg()
         {
             InitializeComponent();
@@ -38,6 +38,7 @@ namespace NCTSYS
 
         private void btnCheckReg_Click(object sender, EventArgs e)
         {
+            //if Reg NO text field is empty
             if (txtRegNo.Text == "")
             {
                 MessageBox.Show("Please Enter Registration Number", "Confirmation",
@@ -45,14 +46,15 @@ namespace NCTSYS
                 txtRegNo.Focus();
                 return;
             }
-            if (Car.isValidReg(txtRegNo.Text) == false)
+            //if reg no not valid
+            if (Util.isValidReg(txtRegNo.Text) == false)
             {
                 MessageBox.Show("Registration Number you entered is invalid !\nPlease Re-enter", "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txtRegNo.Focus();
                 return;
             }
-
+            //get and fill car details
             fillCarDetails();
 
         }
@@ -62,28 +64,32 @@ namespace NCTSYS
             grbDeReg.Visible = true;
             btnContinue.Visible = false;
         }
+
         public void fillCarDetails()
         {
-          
-            aCar.getCarDetails(txtRegNo.Text.ToUpper());
+            //creating an instance of an Car object
+            Car aCar = new Car();
+            //geting Car Details
+            aCar.getCarDetails(txtRegNo.Text.Trim().ToUpper());
 
-            //if a new car
+            //if car not found
             if (aCar.getRegNo().Equals(""))
             {
                 MessageBox.Show("Registration Number you entered not in database  !\nPlease Re-enter", "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clearForm();
                 txtRegNo.Focus();
                 return;
             }
+            //if car is allready De-Registered
             if (aCar.getCarStatus().ToString().Equals("I"))
             {
                 MessageBox.Show("Registration Number you entered allready De-Registered  !", "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
+                clearForm();
                 txtRegNo.Focus();
                 return;
             }
-
-            //if car exists
             else
             {
                 //make check button not visible
@@ -117,7 +123,6 @@ namespace NCTSYS
                 txtEngine.ReadOnly = true;
                 txtFuel.ReadOnly = true;
                 dtpFregdate.Enabled = false;
-
                 grbCarDetails.Visible = true;
                 btnClear.Visible = true;
             }
@@ -125,13 +130,14 @@ namespace NCTSYS
 
         private void btnDeReg_Click(object sender, EventArgs e)
         {
-            
-            aCar.deRegister(txtRegNo.Text);
+            //calling de-register method
+            Car.deRegister(txtRegNo.Text.ToUpper());
             MessageBox.Show("The Car is now De-Registered", "Confirmation",
             MessageBoxButtons.OK, MessageBoxIcon.Information);
             clearForm();
 
         }
+
         private void clearForm()
         {
             txtRegNo.Text = String.Empty;
@@ -142,7 +148,6 @@ namespace NCTSYS
             txtEngine.ReadOnly = false;
             txtFuel.ReadOnly = false;
             dtpFregdate.Enabled = true;
-
             grbCarDetails.Visible = false;
             grbDeReg.Visible = false;
             btnClear.Visible = false;

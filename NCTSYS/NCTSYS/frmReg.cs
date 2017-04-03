@@ -59,12 +59,15 @@ namespace NCTSYS
             //set date, cannot be in the future
             dtpFregdate.MaxDate = DateTime.Now;
             dtpRegDate.MaxDate = DateTime.Now;
-
-            
+        
             //casting to upper case
             txtRegNo.CharacterCasing = CharacterCasing.Upper;
             txtPPSN.CharacterCasing = CharacterCasing.Upper;
-            txtEmail.CharacterCasing = CharacterCasing.Lower;
+            txtFname.CharacterCasing = CharacterCasing.Upper;
+            txtSname.CharacterCasing = CharacterCasing.Upper;
+            txtAdd1.CharacterCasing = CharacterCasing.Upper;
+            txtAdd2.CharacterCasing = CharacterCasing.Upper;
+            txtEmail.CharacterCasing = CharacterCasing.Upper;
 
             btnClearCarReg.Visible = false;    
         }
@@ -79,7 +82,7 @@ namespace NCTSYS
                 txtRegNo.Focus();
                 return;
             }
-            if (Car.isValidReg(txtRegNo.Text) == false)
+            if (Util.isValidReg(txtRegNo.Text) == false)
             {
                 MessageBox.Show("Registration Number you entered is invalid !\nPlease Re-enter", "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -97,7 +100,7 @@ namespace NCTSYS
         public void fillCarDetails()
         {
             Car car = new Car();
-            car.getCarDetails(txtRegNo.Text);
+            car.getCarDetails(txtRegNo.Text.ToUpper());
 
             //if a new car
             if (car.getMake().Equals(""))
@@ -187,7 +190,7 @@ namespace NCTSYS
                 MessageBox.Show("Please Enter your PPSN !", "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            else if (NCTSYS.Owner.isValidPPSN(txtPPSN.Text) == false)
+            else if (Util.isValidPPSN(txtPPSN.Text) == false)
             {
                 MessageBox.Show("PPS Number you entered is invalid !\nPlease Re-enter", "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -253,7 +256,7 @@ namespace NCTSYS
                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if (NCTSYS.Owner.isValidEmail(txtEmail.Text) == false)
+            if (Util.isValidEmail(txtEmail.Text) == false)
             {
                 MessageBox.Show("Email address you entered is invalid !\nPlease Re-enter", "Confirmation",
                 MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -272,9 +275,15 @@ namespace NCTSYS
                 if (chkCar.Checked == false)
                 {
                     char carStatus = 'A';
-                    Car newCar = new Car(txtRegNo.Text.ToUpper(), cboMake.Text, cboModel.Text, Convert.ToDouble(cboEngine.Text), cboColour.Text, cboFuel.Text, carStatus, dtpFregdate.Text);
+                    Car newCar = new Car(txtRegNo.Text.ToUpper(), cboMake.Text, cboModel.Text, Convert.ToDouble(cboEngine.Text), cboColour.Text, cboFuel.Text, carStatus, dtpFregdate.Text, txtPPSN.Text.ToUpper());
                     newCar.regCar();
                 }
+                else
+                {
+                    Car.updCurrentOwner(txtRegNo.Text.ToUpper(), txtPPSN.Text.ToUpper());
+                }
+
+
                 //instantiate Owner Object
                 if (chkExists.Checked == false)
                 {
@@ -294,6 +303,8 @@ namespace NCTSYS
                 }
 
                 newRegistration.regOwnership();
+
+
 
                 //Display confirmation message
                 MessageBox.Show("Registration Number: " + txtRegNo.Text.Trim() + " is now registered" + "\nThank you !", "Confirmation",

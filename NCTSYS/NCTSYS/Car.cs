@@ -21,6 +21,7 @@ namespace NCTSYS
         private string fuel;
         protected char carStatus = 'A';
         private string firstRegDate;
+        private string currentOwner;
 
         public Car()
         {
@@ -32,8 +33,9 @@ namespace NCTSYS
             fuel = "";
             carStatus = ' ';
             firstRegDate = "";
+            currentOwner = "";
         }
-        public Car(String RegNo, String Make, String Model, double Engine, String Color, String Fuel, char CarStatus, String FirstRegDate)
+        public Car(String RegNo, String Make, String Model, double Engine, String Color, String Fuel, char CarStatus, String FirstRegDate, String CurrentOwner)
         {
             regNo = RegNo;
             make = Make;
@@ -43,6 +45,8 @@ namespace NCTSYS
             fuel = Fuel;
             carStatus = CarStatus;
             firstRegDate = FirstRegDate;
+            currentOwner = CurrentOwner;
+
         }
         public String getRegNo()
         {
@@ -76,6 +80,10 @@ namespace NCTSYS
         {
             return firstRegDate;
         }
+        public String getCurrentOwner()
+        {
+            return currentOwner;
+        }
         public void regCar()
         {
             //Connect to the DB
@@ -83,7 +91,7 @@ namespace NCTSYS
             myConn.Open();
 
             //Define SQL Query
-            String strSQL = "INSERT INTO CARS VALUES('" + this.regNo + "','" + this.make + "','" + this.model + "'," + this.engine + ",'" + this.color + "','" + this.fuel + "','" + this.carStatus + "','" + this.firstRegDate + "')";
+            String strSQL = "INSERT INTO CARS VALUES('" + this.regNo + "','" + this.make + "','" + this.model + "'," + this.engine + ",'" + this.color + "','" + this.fuel + "','" + this.carStatus + "','" + this.firstRegDate + "','" + this.currentOwner + "')";
             //Execute SQL Query 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
             cmd.ExecuteNonQuery();
@@ -119,8 +127,25 @@ namespace NCTSYS
             // close DB
             myConn.Close();
         }
+        public static void updCurrentOwner(string regNo, string PPSN)
+        {
+            //Connect to the DB
+            OracleConnection myConn = new OracleConnection(DBConnect.oradb);
+            myConn.Open();
+
+            //Define SQL Query
+            String strSQL = "UPDATE CARS SET CURRENTOWNER = '" + PPSN + "' WHERE REG_NO = '" + regNo + "'";
+            //Execute SQL Query 
+            OracleCommand cmd = new OracleCommand(strSQL, myConn);
+
+            cmd.ExecuteNonQuery();
+
+            // close DB
+            myConn.Close();
+
+        }
         //de-register a car
-        public void deRegister(string regNo)
+        public static void deRegister(string regNo)
         {
             //Connect to the DB
             OracleConnection myConn = new OracleConnection(DBConnect.oradb);
@@ -131,26 +156,9 @@ namespace NCTSYS
 
             //Execute SQL Query 
             OracleCommand cmd = new OracleCommand(strSQL, myConn);
-
-            OracleDataReader dr = cmd.ExecuteReader();
+            cmd.ExecuteNonQuery();
 
             myConn.Close();
-        }
-        //Reg No Validation
-        public static Boolean isValidReg(String regNo)
-        {
-            // Define Regex for car reg with 3 digits-two letters-up to 5 digits
-            if ((Regex.IsMatch(regNo, "^[0-9]{2}[12][-][A-Za-z]{1,2}[-][0-9]{1,5}$")))
-            {
-                return true;
-            }
-            // Define Regex for car reg with 2 digits-two letters-up to 5 digits
-            else if (Regex.IsMatch(regNo, "^[0-9]{2}[-][A-Za-z]{1,2}[-][0-9]{1,5}$"))
-            {
-                return true;
-            }
-            else
-                return false;
         }
 
     }

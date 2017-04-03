@@ -93,6 +93,7 @@ CREATE TABLE Cars
  Fuel_Type varchar(15) NOT NULL,
  Car_Status char(1) NOT NULL,
  First_Reg_Date date NOT NULL,
+ CurrentOwner char(8) NOT NULL,
  CONSTRAINT pk_Reg_No PRIMARY KEY (Reg_No));
  
 CREATE TABLE Owners
@@ -109,13 +110,13 @@ CREATE TABLE Owners
  
 CREATE TABLE Centres
 (Centre_ID numeric(2) NOT NULL,
- Centre_Name varchar(30) NOT NULL,
- Centre_Add1 varchar(30) NOT NULL,
- Centre_Add2 varchar(30) NOT NULL,
- Centre_Tel_No varchar(11) NOT NULL,
- Centre_County varchar(20) NOT NULL,
- Centre_Email varchar(30) NOT NULL,
- Centre_Reg_Date date DEFAULT sysdate,
+ C_Name varchar(30) NOT NULL,
+ Add1 varchar(30) NOT NULL,
+ Add2 varchar(30) NOT NULL,
+ Tel_No varchar(11) NOT NULL,
+ Email varchar(30) NOT NULL,
+ County varchar(20) NOT NULL,
+ Status char (1) NOT NULL,
  CONSTRAINT pk_Centre_ID PRIMARY KEY (Centre_ID));
  
  CREATE TABLE Registrations
